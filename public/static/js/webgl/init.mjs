@@ -2,6 +2,7 @@ import {initShaders} from './utils/initShaders.mjs';
 import {render} from './render.mjs'
 import {hex2dec} from './utils/util.mjs';
 import {createLine} from './shapes/line.mjs';
+import {createSquare} from './shapes/square.mjs';
 import {getPoint} from './action/line.mjs';
 
 export function init(master) {
@@ -48,6 +49,7 @@ function events(master) {
             var x = -1 + 2*e.offsetX/master.canvas.width;
             var y = -1 + 2*(master.canvas.height - e.offsetY)/master.canvas.height;
             var radio = document.getElementsByTagName('input');
+            // var eventType;
             
             for (var i = 0; i < radio.length; ++i) {
                 if (radio[i].type == 'radio' && radio[i].checked) {
@@ -94,6 +96,7 @@ function events(master) {
                 }
             }
         }
+
         render(master);
     });
 
@@ -111,7 +114,7 @@ function events(master) {
                     master.line_start = [];
                     master.line_end = [];
                 } else if (radio[i].value == 'square') {
-                    master.squares.push(createLine(master._start, master.line_end));
+                    master.squares.push(createSquare(master.square_start, master.square_end));
                     master.square_start = [];
                     master.square_end = [];
                 } else if (radio[i].value == 'polygon') {
@@ -121,6 +124,7 @@ function events(master) {
                 }
             }
         }
+
         render(master);
     });
 

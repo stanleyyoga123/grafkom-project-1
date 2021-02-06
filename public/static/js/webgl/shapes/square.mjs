@@ -9,33 +9,37 @@ export function rectangleVertex(point) {
 }
 
 export function renderSquare(master) {
-    var renderedLine = [];
-    createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
-    master.lines.forEach((el) => {
-        el.forEach((el2) => renderedLine.push(el2));
+    var renderedSquare = [];
+    createSquare(master.square_start, master.square_end).forEach(el => renderedSquare.push(el));
+    master.squares.forEach((el) => {
+        el.forEach((el2) => renderedSquare.push(el2));
     });
 
     master.gl.clear(master.gl.COLOR_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
-    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(renderedLine), master.gl.STATIC_DRAW);
-    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedLine));
+    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(renderedSquare), master.gl.STATIC_DRAW);
+    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedSquare));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
     // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(master.colors), master.gl.STATIC_DRAW);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.colors));
-    for (var i = 0; i < renderedLine.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
+    for (var i = 0; i < renderedSquare.length / 6; ++i){
+        master.gl.drawArrays(master.gl.TRIANGLE_FAN, 3 * i, 3);
+        master.gl.drawArrays(master.gl.TRIANGLE_FAN, 3 * i + 3, 3);
+    }
+        
 }
 
 export function createSquare(start, end) {
-    const width = 0.007;
-    const deg = Math.atan2(end[1]-start[1], end[0]-start[0]) * 180 / Math.PI;
-    var p1 = rotate(start[0], start[1], start[0], start[1]-width, -deg);
-    var p2 = rotate(start[0], start[1], start[0], start[1]+width, -deg);
-    var p3 = rotate(end[0], end[1], end[0], end[1]+width, -deg);
-    var p4 = rotate(end[0], end[1], end[0], end[1]-width, -deg);
+    const v1 = start;
+    const v4 = end;
+    const v3 = [start[0], end[1]];
+    const v2 = [end[0], start[1]];
     return [
-        p1[0], p1[1],
-        p2[0], p2[1],
-        p3[0], p3[1], 
-        p4[0], p4[1],
+        v1[0], v1[1],
+        v2[0], v2[1],
+        v3[0], v3[1], 
+        v2[0], v2[1],
+        v3[0], v3[1], 
+        v4[0], v4[1],
     ];
 }
