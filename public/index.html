@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            background-color: #888888;
+        }
+
+        canvas {
+            background-color: #FFFFFF;
+        }
+    </style>
+    <script id="shaderVs" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        attribute vec4 vColor;
+        varying vec4 fColor;
+        void main() {
+            gl_Position = vPosition;
+            fColor = vColor;
+        }
+    </script>
+    
+    <script id="shaderFs" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 fColor;
+        void main() {
+            gl_FragColor = fColor;
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input id="color-input" type="color" value="#000000"><br><br>
+    <canvas id="glCanvas" width="640" height="480"></canvas>
+</body>
+</html>
