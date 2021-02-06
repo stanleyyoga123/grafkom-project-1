@@ -14,5 +14,7 @@ export class Master {
 
         this.line_start = [];
         this.line_stop = [];
+        this.lines = [];
+        this.lines_color = [];
     }
 }

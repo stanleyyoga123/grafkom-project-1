@@ -1,6 +1,7 @@
 import {initShaders} from './utils/initShaders.mjs';
 import {render} from './render.mjs'
 import {hex2dec} from './utils/util.mjs';
+import {createLine} from './shapes/line.mjs';
 
 export function init(master) {
     master.canvas = document.getElementById('glCanvas');
@@ -42,23 +43,65 @@ function events(master) {
         if (master.mouseClicked) {
             var x = -1 + 2*e.offsetX/master.canvas.width;
             var y = -1 + 2*(master.canvas.height - e.offsetY)/master.canvas.height;
-            master.points.push([x, y]);
-            master.lineColor.forEach(el => master.colors.push(el));
-            master.line_end = [x,y];
+            var radio = document.getElementsByTagName('input');
+            
+            for (var i = 0; i < radio.length; ++i) {
+                if (radio[i].type == 'radio' && radio[i].checked) {
+                    if (radio[i].value == 'line') {
+                        master.line_end = [x,y];
+                    } else if (radio[i].value == 'square') {
+                        // Square Event
+                    } else if (radio[i].value == 'polygon') {
+                        // Polygon Event
+                    }
+                }
+            }
             render(master);
         }
     });
 
     master.canvas.addEventListener('mousedown', (e) => {
+        master.mouseClicked = true;
         var x = -1 + 2*e.offsetX/master.canvas.width;
         var y = -1 + 2*(master.canvas.height - e.offsetY)/master.canvas.height;
-        master.line_start = [x,y];
-        master.mouseClicked = true;
+
+        var radio = document.getElementsByTagName('input');
+            
+            for (var i = 0; i < radio.length; ++i) {
+                if (radio[i].type == 'radio' && radio[i].checked) {
+                    if (radio[i].value == 'line') {
+                        master.line_start = [x,y];
+                        master.line_end = [x,y];
+                    } else if (radio[i].value == 'square') {
+                        // Square Event
+                    } else if (radio[i].value == 'polygon') {
+                        // Polygon Event
+                    }
+                }
+            }
         render(master);
     });
 
     master.canvas.addEventListener('mouseup', () => {
         master.mouseClicked = false;
+
+        var radio = document.getElementsByTagName('input');
+            
+            for (var i = 0; i < radio.length; ++i) {
+                if (radio[i].type == 'radio' && radio[i].checked) {
+                    if (radio[i].value == 'line') {
+                        // Line Event
+                        master.lines.push(createLine(master.line_start, master.line_end));
+                        master.line_start = [];
+                        master.line_end = [];
+                    } else if (radio[i].value == 'square') {
+                        // Square Event
+                    } else if (radio[i].value == 'polygon') {
+                        // Polygon Event
+                    }
+                }
+            }
+        render(master);
     });
 
     var colorInput = document.getElementById('color-input');
