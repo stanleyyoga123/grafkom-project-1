@@ -28,3 +28,7 @@ canvas {
     align-items: center;
 }
 
+.menu-item input {
+    margin: 5px;
+}
+

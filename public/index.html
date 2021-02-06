@@ -29,11 +29,12 @@
         <button class="menu-item"> Export </button>
         <button class="menu-item"> Import </button>
         <div class="menu-item">
+            <input type="radio" name="action" value="freehand">Free Hand
+            <input type="radio" name="action" value="line">Line 
+            <input type="radio" name="action" value="square">Square  
+            <input type="radio" name="action" value="polygon">Polygon  
             <input id="color-input" type="color" value="#000000"><br><br>
         </div>
-        <button class="menu-item"> Line </button>
-        <button class="menu-item"> Square </button>
-        <button class="menu-item"> Polygon </button>
     </div>
     <canvas id="glCanvas" width="640" height="480"></canvas>
 </body>

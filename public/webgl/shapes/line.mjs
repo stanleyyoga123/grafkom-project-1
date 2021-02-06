@@ -1,5 +1,3 @@
-import {rotate} from './../utils/util.mjs'
-
 export function renderLine(master) {
     var renderedLine = [];
     createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
@@ -17,15 +15,10 @@ export function renderLine(master) {
 
 export function createLine(start, end) {
     const width = 0.007;
-    const deg = Math.atan2(end[1]-start[1], end[0]-start[0]) * 180 / Math.PI;
-    var p1 = rotate(start[0], start[1], start[0], start[1]-width, -deg);
-    var p2 = rotate(start[0], start[1], start[0], start[1]+width, -deg);
-    var p3 = rotate(end[0], end[1], end[0], end[1]+width, -deg);
-    var p4 = rotate(end[0], end[1], end[0], end[1]-width, -deg);
     return [
-        p1[0], p1[1],
-        p2[0], p2[1],
-        p3[0], p3[1], 
-        p4[0], p4[1],
+        start[0]-width, start[1]-width,
+        start[0]-width, start[1]+width,
+        end[0]+width, end[1]+width,
+        end[0]+width, end[1]-width,
     ];
 }
