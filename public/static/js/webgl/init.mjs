@@ -13,6 +13,7 @@ export function init(master) {
     // WebGL Configurations
     master.gl.viewport(0, 0, master.canvas.width, master.canvas.height);
     master.gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    master.gl.clear(master.gl.COLOR_BUFFER_BIT);
 
     // Load Shaders 
     var vs = document.getElementById('shaderVs').innerHTML;
@@ -102,9 +103,8 @@ function events(master) {
                 if (radio[i].type == 'radio' && radio[i].checked) {
                     if (radio[i].value == 'line') {
                         // Line Event
-                        console.log(master.line_start);
-                        console.log(master.line_end);
                         master.lines.push(createLine(master.line_start, master.line_end));
+                        // master.lineColor.forEach(el => master.lines_color.push(el));
                         master.line_start = [];
                         master.line_end = [];
                     } else if (radio[i].value == 'square') {

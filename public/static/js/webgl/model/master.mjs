@@ -13,6 +13,7 @@ export class Master {
         this.lineColor = [0, 0, 0];
 
         this.line_move = [];
+        this.line_priority = [];
         this.line_start = [];
         this.line_stop = [];
         this.lines = [];
