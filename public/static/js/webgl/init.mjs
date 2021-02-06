@@ -26,6 +26,7 @@ export function init(master) {
     // Vertex Buffer
     master.bufferId = master.gl.createBuffer();
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
+    master.gl.bufferData(master.gl.ARRAY_BUFFER, 8 * 200000, master.gl.STATIC_DRAW);
     var vPosition = master.gl.getAttribLocation(master.gl.program, 'vPosition');
     master.gl.vertexAttribPointer(vPosition, 2, master.gl.FLOAT, false, 0, 0);
     master.gl.enableVertexAttribArray(vPosition);
@@ -33,6 +34,7 @@ export function init(master) {
     // Color Buffer
     master.cbufferId = master.gl.createBuffer();
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
+    master.gl.bufferData(master.gl.ARRAY_BUFFER, 8 * 200000, master.gl.STATIC_DRAW);
     var vColor = master.gl.getAttribLocation(master.gl.program, 'vColor');
     master.gl.vertexAttribPointer(vColor, 3, master.gl.FLOAT, false, 0, 0);
     master.gl.enableVertexAttribArray(vColor);
@@ -77,20 +79,20 @@ function events(master) {
 
         var radio = document.getElementsByTagName('input');
             
-            for (var i = 0; i < radio.length; ++i) {
-                if (radio[i].type == 'radio' && radio[i].checked) {
-                    if (radio[i].value == 'line') {
-                        master.line_start = [x,y];
-                        master.line_end = [x,y];
-                    } else if (radio[i].value == 'square') {
-                        // Square Event
-                    } else if (radio[i].value == 'polygon') {
-                        // Polygon Event
-                    } else if (radio[i].value == 'freehand') {
-                        getPoint(master, [x,y]);
-                    }
+        for (var i = 0; i < radio.length; ++i) {
+            if (radio[i].type == 'radio' && radio[i].checked) {
+                if (radio[i].value == 'line') {
+                    master.line_start = [x,y];
+                    master.line_end = [x,y];
+                } else if (radio[i].value == 'square') {
+                    // Square Event
+                } else if (radio[i].value == 'polygon') {
+                    // Polygon Event
+                } else if (radio[i].value == 'freehand') {
+                    getPoint(master, [x,y]);
                 }
             }
+        }
         render(master);
     });
 
@@ -99,23 +101,23 @@ function events(master) {
 
         var radio = document.getElementsByTagName('input');
             
-            for (var i = 0; i < radio.length; ++i) {
-                if (radio[i].type == 'radio' && radio[i].checked) {
-                    if (radio[i].value == 'line') {
-                        // Line Event
-                        master.lines.push(createLine(master.line_start, master.line_end));
-                        // master.lineColor.forEach(el => master.lines_color.push(el));
-                        master.line_start = [];
-                        master.line_end = [];
-                    } else if (radio[i].value == 'square') {
-                        // Square Event
-                    } else if (radio[i].value == 'polygon') {
-                        // Polygon Event
-                    } else if (radio[i].value == 'freehand') {
-                        master.line_move = [];
-                    }
+        for (var i = 0; i < radio.length; ++i) {
+            if (radio[i].type == 'radio' && radio[i].checked) {
+                if (radio[i].value == 'line') {
+                    // Line Event
+                    master.lines.push(createLine(master.line_start, master.line_end));
+                    // master.lineColor.forEach(el => master.lines_color.push(el));
+                    master.line_start = [];
+                    master.line_end = [];
+                } else if (radio[i].value == 'square') {
+                    // Square Event
+                } else if (radio[i].value == 'polygon') {
+                    // Polygon Event
+                } else if (radio[i].value == 'freehand') {
+                    master.line_move = [];
                 }
             }
+        }
         render(master);
     });
 
