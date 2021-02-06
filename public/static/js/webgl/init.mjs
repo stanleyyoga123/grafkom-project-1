@@ -2,6 +2,7 @@ import {initShaders} from './utils/initShaders.mjs';
 import {render} from './render.mjs'
 import {hex2dec} from './utils/util.mjs';
 import {createLine} from './shapes/line.mjs';
+import {getPoint} from './action/line.mjs';
 
 export function init(master) {
     master.canvas = document.getElementById('glCanvas');
@@ -12,6 +13,7 @@ export function init(master) {
     // WebGL Configurations
     master.gl.viewport(0, 0, master.canvas.width, master.canvas.height);
     master.gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    master.gl.clear(master.gl.COLOR_BUFFER_BIT);
 
     // Load Shaders 
     var vs = document.getElementById('shaderVs').innerHTML;
@@ -53,6 +55,14 @@ function events(master) {
                         // Square Event
                     } else if (radio[i].value == 'polygon') {
                         // Polygon Event
+                    } else if (radio[i].value == 'freehand') {
+                        if (master.line_move.length > 0) {
+                            if (master.line_move[5] == 0) {
+                                master.lines[master.line_move[0]] = createLine([x,y], [master.line_move[3], master.line_move[4]]);
+                            } else {
+                                master.lines[master.line_move[0]] = createLine([master.line_move[1], master.line_move[2]], [x,y]);
+                            }
+                        }
                     }
                 }
             }
@@ -76,6 +86,8 @@ function events(master) {
                         // Square Event
                     } else if (radio[i].value == 'polygon') {
                         // Polygon Event
+                    } else if (radio[i].value == 'freehand') {
+                        getPoint(master, [x,y]);
                     }
                 }
             }
@@ -92,12 +104,15 @@ function events(master) {
                     if (radio[i].value == 'line') {
                         // Line Event
                         master.lines.push(createLine(master.line_start, master.line_end));
+                        // master.lineColor.forEach(el => master.lines_color.push(el));
                         master.line_start = [];
                         master.line_end = [];
                     } else if (radio[i].value == 'square') {
                         // Square Event
                     } else if (radio[i].value == 'polygon') {
                         // Polygon Event
+                    } else if (radio[i].value == 'freehand') {
+                        master.line_move = [];
                     }
                 }
             }
