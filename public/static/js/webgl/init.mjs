@@ -54,10 +54,10 @@ function events(master) {
                     if (radio[i].value == 'line') {
                         master.line_end = [x,y];
                     } else if (radio[i].value == 'square') {
-                        // Square Event
+                        master.square_end = [x,y];
                     } else if (radio[i].value == 'polygon') {
                         // Polygon Event
-                    } else if (radio[i].value == 'freehand') {
+                    } else if (radio[i].value == 'change-line') {
                         if (master.line_move.length > 0) {
                             if (master.line_move[5] == 0) {
                                 master.lines[master.line_move[0]] = createLine([x,y], [master.line_move[3], master.line_move[4]]);
@@ -85,10 +85,11 @@ function events(master) {
                     master.line_start = [x,y];
                     master.line_end = [x,y];
                 } else if (radio[i].value == 'square') {
-                    // Square Event
+                    master.square_start = [x,y];
+                    master.square_end = [x,y];
                 } else if (radio[i].value == 'polygon') {
                     // Polygon Event
-                } else if (radio[i].value == 'freehand') {
+                } else if (radio[i].value == 'change-line') {
                     getPoint(master, [x,y]);
                 }
             }
@@ -110,10 +111,12 @@ function events(master) {
                     master.line_start = [];
                     master.line_end = [];
                 } else if (radio[i].value == 'square') {
-                    // Square Event
+                    master.squares.push(createLine(master._start, master.line_end));
+                    master.square_start = [];
+                    master.square_end = [];
                 } else if (radio[i].value == 'polygon') {
                     // Polygon Event
-                } else if (radio[i].value == 'freehand') {
+                } else if (radio[i].value == 'change-line') {
                     master.line_move = [];
                 }
             }

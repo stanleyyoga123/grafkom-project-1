@@ -13,6 +13,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 50%;
+    min-width: 670px;
     height: 100%;
     /* min-height: 700; */
     margin: auto;
@@ -23,13 +24,21 @@ canvas {
     background-color: #FFFFFF;
 }
 
+.title {
+    margin: 35px auto 10px auto; 
+    text-align: center;
+    padding: 20px 100px;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
 }
 
 .menu-item {
-    /* position: relative;  */
     padding: 5px 15px;
     margin: 20px 10px;
     text-align: center;
@@ -41,7 +50,19 @@ canvas {
     align-items: center;
 }
 
+.menu-item-cl {
+    padding: 0px 15px;
+    margin: 20px 10px;
+    text-align: center;
+    background-color: #222222;
+    border-color: #555555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .menu-item input {
-    margin: 5px;
+    margin: 5px 10px;
 }
 

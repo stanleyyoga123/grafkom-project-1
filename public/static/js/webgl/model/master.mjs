@@ -12,11 +12,17 @@ export class Master {
         this.colors = [];
         this.lineColor = [0, 0, 0];
 
+        // For Line
         this.line_move = [];
         this.line_priority = [];
         this.line_start = [];
         this.line_stop = [];
         this.lines = [];
         this.lines_color = [];
+
+        // For Square
+        this.squares = [];
+        this.square_start = [];
+        this.square_end = []; 
     }
 }

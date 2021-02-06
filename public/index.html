@@ -27,22 +27,31 @@
 </head>
 <body>
     <main> 
-        <h1 style="margin: 35px auto 10px auto; text-align: center;"> Paint App </h1>
+        <h1 class="title"> Paint App </h1>
         <div class="navbar">
             <button class="menu-item"> Export </button>
             <button class="menu-item"> Import </button>
             <div class="menu-item">
-                <input type="radio" name="action" value="freehand">Free Hand
                 <input type="radio" name="action" value="line">Line 
                 <input type="radio" name="action" value="square">Square  
                 <input type="radio" name="action" value="polygon">Polygon  
-                <input id="color-input" type="color" value="#000000"><br><br>
             </div>
         </div>
-        <div style="height: 480; width: 640;">
+        <div class="navbar">
+            <div class="menu-item-cl">
+                <input id="color-input" type="color" value="#000000">
+            </div>
+            <div class="menu-item">
+                <p style="margin-right: 20px;">Change:</p>
+                <input type="radio" name="action" value="change-line">Line 
+                <input type="radio" name="action" value="change-square">Square  
+                <input type="radio" name="action" value="change-polygon">Polygon  
+            </div>
+        </div>
+        <div style="height: 480; width: 640; margin-bottom: 40px;">
             <canvas id="glCanvas" width="640" height="480"></canvas>
         </div>
-        <!-- <div style="height: 400px; max-height: 30%;"></div> -->
+        <div style="height: 200px; max-height: 20%;"></div>
     </main>
 </body>
 </html>
