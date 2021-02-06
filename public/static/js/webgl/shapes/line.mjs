@@ -2,7 +2,8 @@ import {rotate} from './../utils/util.mjs'
 
 export function renderLine(master) {
     var renderedLine = [];
-    createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
+    if (master.line_start.length != 0) createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
+
     master.lines.forEach((el) => {
         el.forEach((el2) => renderedLine.push(el2));
     });
