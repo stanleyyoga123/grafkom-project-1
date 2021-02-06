@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+}
+
+html {
+    background-color: #888888;
+}
+
+canvas {
+    background-color: #FFFFFF;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-item {
+    /* position: relative;  */
+    padding: 5px 15px;
+    margin: 20px 10px;
+    text-align: center;
+    background-color: #222222;
+    border-color: #555555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
