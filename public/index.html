@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html {
-            background-color: #888888;
-        }
-
-        canvas {
-            background-color: #FFFFFF;
-        }
-    </style>
+    <link rel="stylesheet" href="static/css/main.css">
     <script id="shaderVs" type="x-shader/x-vertex">
         attribute vec4 vPosition;
         attribute vec4 vColor;
@@ -29,15 +21,21 @@
             gl_FragColor = fColor;
         }
     </script>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="static/js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <input id="color-input" type="color" value="#000000">
-    <input type="radio" name="shape" value="line">Line 
-    <input type="radio" name="shape" value="square">Square 
-    <input type="radio" name="shape" value="polygon">Polygon 
-    <br><br>
+    <div class="navbar">
+        <button class="menu-item"> Export </button>
+        <button class="menu-item"> Import </button>
+        <div class="menu-item">
+            <input type="radio" name="action" value="freehand">Free Hand
+            <input type="radio" name="action" value="line">Line 
+            <input type="radio" name="action" value="square">Square  
+            <input type="radio" name="action" value="polygon">Polygon  
+            <input id="color-input" type="color" value="#000000"><br><br>
+        </div>
+    </div>
     <canvas id="glCanvas" width="640" height="480"></canvas>
 </body>
 </html>
