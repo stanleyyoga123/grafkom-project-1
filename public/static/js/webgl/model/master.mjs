@@ -13,16 +13,23 @@ export class Master {
         this.lineColor = [0, 0, 0];
 
         // For Line
+        this.lines = [];
         this.line_move = [];
         this.line_priority = [];
         this.line_start = [];
         this.line_stop = [];
-        this.lines = [];
         this.lines_color = [];
 
         // For Square
         this.squares = [];
         this.square_start = [];
         this.square_end = []; 
+
+        // For Polygon
+        this.polygons = [];
+        this.n_poly = [];
+        this.cur_poly = [];
+        this.cur_n_poly = 0;
+        this.start_poly = false;
     }
 }
