@@ -10,16 +10,14 @@ export function renderLine(master) {
 
     master.gl.clear(master.gl.COLOR_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
-    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(renderedLine), master.gl.STATIC_DRAW);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedLine));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
-    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(master.colors), master.gl.STATIC_DRAW);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.colors));
     for (var i = 0; i < renderedLine.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
 export function createLine(start, end) {
-    const width = 0.007;
+    const width = 0.003;
     const deg = Math.atan2(end[1]-start[1], end[0]-start[0]) * 180 / Math.PI;
     var p1 = rotate(start[0], start[1], start[0], start[1]-width, -deg);
     var p2 = rotate(start[0], start[1], start[0], start[1]+width, -deg);
@@ -32,3 +30,26 @@ export function createLine(start, end) {
         p4[0], p4[1],
     ];
 }
+
+// export function renderLine(master) {
+//     var renderedLine = [];
+//     if (master.line_start.length != 0) createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
+
+//     master.lines.forEach((el) => {
+//         el.forEach((el2) => renderedLine.push(el2));
+//     });
+
+//     master.gl.clear(master.gl.COLOR_BUFFER_BIT);
+//     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
+//     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedLine));
+//     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
+//     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.colors));
+//     for (var i = 0; i < renderedLine.length / 2; ++i) master.gl.drawArrays(master.gl.LINES, 2*i, 2);
+// }
+
+// export function createLine(start, end) {
+//     return [
+//         start[0], start[1],
+//         end[0], end[1],
+//     ];
+// }
