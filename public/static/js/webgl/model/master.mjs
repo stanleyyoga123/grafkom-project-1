@@ -30,5 +30,6 @@ export class Master {
         this.n_poly = [];
         this.cur_poly = [];
         this.cur_n_poly = 0;
+        this.start_poly = false;
     }
 }

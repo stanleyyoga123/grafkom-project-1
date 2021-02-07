@@ -7,14 +7,14 @@ export function renderPolygon(master) {
         master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.lineColor));
         master.gl.drawArrays(master.gl.TRIANGLE_FAN, 0, master.cur_n_poly);
     }
-    if (master.line_start.length != 0) createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
 
     for (var i = 0; i < master.polygons.length; ++i) {
-        for (var j = 0; j < master.polygons[i]; ++j) {
-            renderedPolygon.append(master.polygons[i][j]);
+        for (var j = 0; j < master.polygons[i].length; ++j) {
+            renderedPolygon.push(master.polygons[i][j]);
         }
     }
-    
+
+
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedPolygon));
     // master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
