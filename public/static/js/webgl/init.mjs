@@ -90,7 +90,9 @@ function events(master) {
                     master.square_start = [x,y];
                     master.square_end = [x,y];
                 } else if (radio[i].value == 'polygon') {
-                    // Polygon Event
+                    master.cur_poly.push(x);
+                    master.cur_poly.push(y);
+                    master.cur_n_poly += 1;
                 } else if (radio[i].value == 'change-line') {
                     getPoint(master, [x,y]);
                 }
