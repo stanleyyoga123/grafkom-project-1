@@ -10,23 +10,27 @@ export class Master {
 
         this.points = [];
         this.colors = [];
-        this.lineColor = [0, 0, 0];
+
+        // Current Color
+        this.cur_color = [0, 0, 0];
 
         // For Line
         this.lines = [];
         this.line_move = [];
-        this.line_priority = [];
+        // this.line_priority = [];
         this.line_start = [];
         this.line_stop = [];
         this.lines_color = [];
 
         // For Square
         this.squares = [];
+        this.squares_color = [];
         this.square_start = [];
         this.square_end = []; 
 
         // For Polygon
         this.polygons = [];
+        this.polygons_color = [];
         this.n_poly = [];
         this.cur_poly = [];
         this.cur_n_poly = 0;

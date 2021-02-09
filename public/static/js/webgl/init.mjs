@@ -154,11 +154,12 @@ function events(master) {
                 if (radio[i].value == 'line') {
                     // Line Event
                     master.lines.push(createLine(master.line_start, master.line_end));
-                    // master.lineColor.forEach(el => master.lines_color.push(el));
+                    for (var i = 0; i < 4; ++i) master.cur_color.forEach(el => master.lines_color.push(el));
                     master.line_start = [];
                     master.line_end = [];
                 } else if (radio[i].value == 'square') {
                     master.squares.push(createSquare(master.square_start, master.square_end));
+                    for (var i = 0; i < 4; ++i) master.cur_color.forEach(el => master.squares_color.push(el));
                     master.square_start = [];
                     master.square_end = [];
                 } else if (radio[i].value == 'polygon') {
@@ -175,7 +176,7 @@ function events(master) {
     var colorInput = document.getElementById('color-input');
     colorInput.addEventListener('change', () => {
         const color = colorInput.value;
-        master.lineColor = [hex2dec(color.slice(1,3))/255, 
+        master.cur_color = [hex2dec(color.slice(1,3))/255, 
                             hex2dec(color.slice(3,5))/255, 
                             hex2dec(color.slice(5,7))/255];
     });
@@ -187,6 +188,7 @@ function events(master) {
             if (master.cur_poly.length > 0) {
                 master.polygons.push(master.cur_poly);
                 master.n_poly.push(master.cur_n_poly);
+                for (var i = 0; i < master.cur_n_poly; ++i) master.cur_color.forEach(el => master.polygons_color.push(el));
             }
             master.cur_poly = [];
             master.cur_n_poly = 0;
