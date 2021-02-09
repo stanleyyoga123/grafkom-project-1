@@ -13,8 +13,7 @@
             gl_Position = vPosition;
             fColor = vColor;
         }
-    </script>
-    
+    </script>    
     <script id="shaderFs" type="x-shader/x-fragment">
         precision mediump float;
         varying vec4 fColor;
@@ -23,8 +22,6 @@
         }
     </script>
     <script type="module" src="static/js/script.js"></script>
-    <!-- <script type="module" src="static/js/events/upload.mjs"></script>
-    <script type="module" src="static/js/events/download.mjs"></script> -->
     <title>Document</title>
 </head>
 <body>
@@ -34,9 +31,6 @@
         <!-- Export import util -->
         <a id="download-link" style="display:none"></a>
         <input style="display: none;" type="file" id="upload-btn" value="Select Files">
-        <!-- <form action="">
-            <input style="display: none;" type="submit" id="submit-btn">
-        </form> -->
 
         <div class="navbar">
             <button id="export-btn" class="menu-item"> Export </button>
