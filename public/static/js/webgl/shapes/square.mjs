@@ -10,20 +10,24 @@ export function rectangleVertex(point) {
 
 export function renderSquare(master) {
     var renderedSquare = [];
-    if (master.square_start.length != 0) createSquare(master.square_start, master.square_end).forEach(el => renderedSquare.push(el));
+    var colors = [];
+    if (master.square_start.length != 0) {
+        createSquare(master.square_start, master.square_end).forEach(el => renderedSquare.push(el));
+        for (var i = 0; i < 4; ++i) {
+            master.cur_color.forEach(el => colors.push(el));
+            console.log(i);
+        }
+    } 
     master.squares.forEach((el) => {
         el.forEach((el2) => renderedSquare.push(el2));
     });
+    master.squares_color.forEach(el => colors.push(el));
 
-    // master.gl.clear(master.gl.COLOR_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
-    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(renderedSquare), master.gl.STATIC_DRAW);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedSquare));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
-    // master.gl.bufferData(master.gl.ARRAY_BUFFER, new Float32Array(master.colors), master.gl.STATIC_DRAW);
-    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.colors));
+    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(colors));
     for (var i = 0; i < renderedSquare.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
-        
 }
 
 export function createSquare(start, end) {
