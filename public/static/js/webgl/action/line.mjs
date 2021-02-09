@@ -19,3 +19,20 @@ export function getPointInLine(master, point) {
         }
     }
 }
+
+// export function getPoint(master, point) {
+//     for (var i = 0; i < master.lines.length; ++i) {
+//         console.log(master.lines[i]);
+//         for (var j = 0; j < master.lines[i].length; j+=2) {
+//             if (distance(master.lines[i][j], master.lines[i][j+1], point[0], point[1]) < threshold) {
+//                 console.log(j);
+//                 if (j < 2) {
+//                     master.line_move = [i, master.lines[i][0], master.lines[i][1], master.lines[i][2], master.lines[i][3], 0];
+//                 } else {
+//                     master.line_move = [i, master.lines[i][0], master.lines[i][1], master.lines[i][2], master.lines[i][3], 1];
+//                 }
+//                 return;
+//             }
+//         }
+//     }
+// }
