@@ -48,13 +48,22 @@ function events(master) {
     const importBtn = document.getElementById('import-btn');
     const uploadBtn = document.getElementById('upload-btn');
 
+    exportBtn.addEventListener('click', event => {
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(master));
+        var downloadWidget = document.getElementById('download-link');
+        downloadWidget.setAttribute("href",     dataStr     );
+        downloadWidget.setAttribute("download", "data.json");
+        downloadWidget.click();
+        // console.log(JSON.stringify(master));
+    });
+
     importBtn.addEventListener('click', (e) => {
         if (window.FileList && window.File && window.FileReader) {
             uploadBtn.click();
         } else {
             alert("file upload not supported by your browser!");
         }
-    })
+    });
 
     uploadBtn.addEventListener('change', (event) => {
         const reader = new FileReader();
