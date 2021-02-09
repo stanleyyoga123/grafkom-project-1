@@ -2,7 +2,7 @@ import {distance} from './../utils/util.mjs';
 
 const threshold = 0.015;
 
-export function getPoint(master, point) {
+export function getPointInLine(master, point) {
     for (var i = 0; i < master.lines.length; ++i) {
         for (var j = 0; j < master.lines[i].length; j+=2) {
             if (distance(master.lines[i][j], master.lines[i][j+1], point[0], point[1]) < threshold) {

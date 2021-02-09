@@ -23,14 +23,20 @@
         }
     </script>
     <script type="module" src="static/js/script.js"></script>
+    <!-- <script type="module" src="static/js/events/upload.mjs"></script>
+    <script type="module" src="static/js/events/download.mjs"></script> -->
     <title>Document</title>
 </head>
 <body>
     <main> 
         <h1 class="title"> Paint App </h1>
+        <form action="">
+            <input style="display: none;" type="file" id="upload-btn" value="Select Files">
+            <input style="display: none;" type="submit" id="submit-btn">
+        </form>
         <div class="navbar">
-            <button class="menu-item"> Export </button>
-            <button class="menu-item"> Import </button>
+            <button id="export-btn" class="menu-item"> Export </button>
+            <button id="import-btn" class="menu-item" value="asd"> Import </button>
             <div class="menu-item">
                 <input type="radio" name="action" value="line">Line 
                 <input type="radio" name="action" value="square">Square  
@@ -48,8 +54,8 @@
                 <input type="radio" name="action" value="change-polygon">Polygon  
             </div>
         </div>
-        <div style="height: 480; width: 640; margin-bottom: 40px;">
-            <canvas id="glCanvas" width="640" height="480"></canvas>
+        <div style="height: 600; width: 600; margin-bottom: 40px;">
+            <canvas id="glCanvas" width="600" height="600"></canvas>
         </div>
         <div style="height: 200px; max-height: 20%;"></div>
     </main>

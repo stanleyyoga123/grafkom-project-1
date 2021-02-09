@@ -27,22 +27,37 @@ export function renderSquare(master) {
 }
 
 export function createSquare(start, end) {
+    const size = Math.min(Math.abs(start[0] - end[0]), Math.abs(start[1] - end[1]));
+    const xEnd = start[0] + ((start[0] - end[0] > 0) ? -size : size);
+    const yEnd = start[1] + ((start[1] - end[1] > 0) ? -size : size);
+
     const v1 = start;
-    const v4 = end;
-    const v3 = [start[0], end[1]];
-    const v2 = [end[0], start[1]];
-    // return [
-    //     v1[0], v1[1],
-    //     v2[0], v2[1],
-    //     v3[0], v3[1], 
-    //     v2[0], v2[1],
-    //     v3[0], v3[1], 
-    //     v4[0], v4[1],
-    // ];
+    const v3 = [xEnd, yEnd];
+    const v4 = [v1[0], v3[1]];
+    const v2 = [v3[0], v1[1]];
+
     return [
         v1[0], v1[1],
         v2[0], v2[1],
-        v4[0], v4[1],
         v3[0], v3[1],
+        v4[0], v4[1],
     ];
+}
+
+export function reshapeSquare(square, changedIdx){
+    const crossIdx = changedIdx % 4;
+    const size = Math.min(Math.abs(square[changedIdx][0] - square[crossIdx][0]),
+        Math.abs(square[changedIdx][1] - square[crossIdx][1]));
+    const x = square[crossIdx][0] + ((square[crossIdx][0] - square[changedIdx][0] > 0) ? -size : size);
+    const y = square[crossIdx][1] + ((square[crossIdx][1] - square[changedIdx][1] > 0) ? -size : size);
+    
+    const newSquare = [[], [], [], []];
+
+    newSquare[crossIdx] = square[crossIdx];
+    newSquare[changedIdx] = [x, y];
+    newSquare[(crossIdx + 1) % 4] = [square[crossIdx][0], y];
+    newSquare[(changedIdx + 1) % 4] = [x, square[crossIdx][1]];
+
+    return newSquare;
+
 }

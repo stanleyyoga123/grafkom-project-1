@@ -3,7 +3,7 @@ import {render} from './render.mjs'
 import {hex2dec} from './utils/util.mjs';
 import {createLine} from './shapes/line.mjs';
 import {createSquare} from './shapes/square.mjs';
-import {getPoint} from './action/line.mjs';
+import {getPointInLine} from './action/line.mjs';
 
 export function init(master) {
     master.canvas = document.getElementById('glCanvas');
@@ -44,6 +44,37 @@ export function init(master) {
 }
 
 function events(master) {
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const uploadBtn = document.getElementById('upload-btn');
+
+    importBtn.addEventListener('click', (e) => {
+        if (window.FileList && window.File && window.FileReader) {
+            uploadBtn.click();
+        } else {
+            alert("file upload not supported by your browser!");
+        }
+    })
+
+    uploadBtn.addEventListener('change', (event) => {
+        const reader = new FileReader();
+        const file = event.target.files[0];
+  
+        reader.addEventListener('load', event => {
+            try{
+                var data = JSON.parse(event.target.result);
+            } catch (err) {
+                alert("invalid json file data!");
+            }
+
+            // console.log(obj);
+            master.loadJSONData(data);
+        });
+
+        reader.readAsText(file);
+        render(master);
+    });
+
     master.canvas.addEventListener('mousemove', (e) => {
         if (master.mouseClicked) {
             var x = -1 + 2*e.offsetX/master.canvas.width;
@@ -92,7 +123,7 @@ function events(master) {
                 } else if (radio[i].value == 'polygon') {
                     // Polygon Event
                 } else if (radio[i].value == 'change-line') {
-                    getPoint(master, [x,y]);
+                    getPointInLine(master, [x,y]);
                 }
             }
         }

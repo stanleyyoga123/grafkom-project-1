@@ -25,4 +25,8 @@ export class Master {
         this.square_start = [];
         this.square_end = []; 
     }
+
+    loadJSONData(data){
+        alert(`data from ${data} loaded!`);
+    }
 }
