@@ -24,6 +24,10 @@ canvas {
     background-color: #FFFFFF;
 }
 
+textarea {
+    resize: none;
+}
+
 .title {
     margin: 35px auto 10px auto; 
     text-align: center;
@@ -66,3 +70,10 @@ canvas {
     margin: 5px 10px;
 }
 
+.help {
+    padding: 20px 130px;
+    margin: 20px 0;
+    background-color: black;
+    color: white;
+    font-weight: 500;
+}
