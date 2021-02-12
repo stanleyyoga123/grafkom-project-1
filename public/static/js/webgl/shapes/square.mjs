@@ -52,7 +52,7 @@ export function reshapeSquare(squareArr, newPoint){
     const changedIdx = squareArr[1];
     const crossIdx = (changedIdx + 2) % 4;
     const square = []
-    for(let i = 2; i < 10; i++){
+    for(let i = 2; i < 10; i+=2){
         square.push([squareArr[i], squareArr[i + 1]]);
     }
 
@@ -76,7 +76,6 @@ export function reshapeSquare(squareArr, newPoint){
         newSquareArr.push(pair[1]);
     })
 
-
-    return newSquare;
+    return newSquareArr;
 
 }

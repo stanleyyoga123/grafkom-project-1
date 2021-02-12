@@ -107,8 +107,8 @@ function events(master) {
                                 master.lines[master.line_move[0]] = createLine([master.line_move[1], master.line_move[2]], [x,y]);
                             }
                         }
-                    } else if (radio[i].value == 'change-square'){
-                        // master.squares[master.square_move[0]] = reshapeSquare(master.square_move, [x,y]);
+                    } else if (radio[i].value == 'change-square' && master.square_move.length != 0){
+                        master.squares[master.square_move[0]] = reshapeSquare(master.square_move, [x,y]);
                     }
                 }
             }
