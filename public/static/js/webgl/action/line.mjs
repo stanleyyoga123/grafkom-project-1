@@ -15,6 +15,7 @@ export function getPointInLine(master, point) {
                 } else {
                     master.line_move = [i, x_left, y_left, x_right, y_right, 0];
                 }
+                return;
             }
         }
     }

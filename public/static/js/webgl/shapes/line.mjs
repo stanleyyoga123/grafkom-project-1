@@ -2,17 +2,23 @@ import {rotate} from './../utils/util.mjs'
 
 export function renderLine(master) {
     var renderedLine = [];
-    if (master.line_start.length != 0) createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
+    var colors = []
+    if (master.line_start.length != 0) {
+        createLine(master.line_start, master.line_end).forEach(el => renderedLine.push(el));
+        for (var i = 0; i < 4; ++i) master.cur_color.forEach(el => colors.push(el));
+    }
 
     master.lines.forEach((el) => {
         el.forEach((el2) => renderedLine.push(el2));
     });
+    master.lines_color.forEach(el => colors.push(el));
+    console.log(colors);
 
     master.gl.clear(master.gl.COLOR_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedLine));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
-    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(master.colors));
+    master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(colors));
     for (var i = 0; i < renderedLine.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
