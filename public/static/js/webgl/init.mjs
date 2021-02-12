@@ -2,8 +2,9 @@ import {initShaders} from './utils/initShaders.mjs';
 import {render} from './render.mjs'
 import {hex2dec} from './utils/util.mjs';
 import {createLine} from './shapes/line.mjs';
-import {createSquare} from './shapes/square.mjs';
+import {createSquare, reshapeSquare} from './shapes/square.mjs';
 import {getPointInLine} from './action/line.mjs';
+import {getPointInSquare} from './action/square.mjs';
 
 export function init(master) {
     master.canvas = document.getElementById('glCanvas');
@@ -106,6 +107,8 @@ function events(master) {
                                 master.lines[master.line_move[0]] = createLine([master.line_move[1], master.line_move[2]], [x,y]);
                             }
                         }
+                    } else if (radio[i].value == 'change-square'){
+                        // master.squares[master.square_move[0]] = reshapeSquare(master.square_move, [x,y]);
                     }
                 }
             }
@@ -136,6 +139,8 @@ function events(master) {
                     }
                 } else if (radio[i].value == 'change-line') {
                     getPointInLine(master, [x,y]);
+                } else if (radio[i].value == 'change-square'){
+                    getPointInSquare(master, [x,y]);
                 }
             }
         }
@@ -165,6 +170,8 @@ function events(master) {
                     // Polygon Event
                 } else if (radio[i].value == 'change-line') {
                     master.line_move = [];
+                } else if (radio[i].value == 'change-square'){
+                    master.square_move = [];
                 }
             }
         }

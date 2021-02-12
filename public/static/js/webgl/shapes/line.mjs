@@ -12,7 +12,7 @@ export function renderLine(master) {
         el.forEach((el2) => renderedLine.push(el2));
     });
     master.lines_color.forEach(el => colors.push(el));
-    console.log(colors);
+    // console.log(colors);
 
     master.gl.clear(master.gl.COLOR_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);

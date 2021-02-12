@@ -15,7 +15,7 @@ export function renderSquare(master) {
         createSquare(master.square_start, master.square_end).forEach(el => renderedSquare.push(el));
         for (var i = 0; i < 4; ++i) {
             master.cur_color.forEach(el => colors.push(el));
-            console.log(i);
+            // console.log(i);
         }
     } 
     master.squares.forEach((el) => {
@@ -48,8 +48,16 @@ export function createSquare(start, end) {
     ];
 }
 
-export function reshapeSquare(square, changedIdx){
-    const crossIdx = changedIdx % 4;
+export function reshapeSquare(squareArr, newPoint){
+    const changedIdx = squareArr[1];
+    const crossIdx = (changedIdx + 2) % 4;
+    const square = []
+    for(let i = 2; i < 10; i++){
+        square.push([squareArr[i], squareArr[i + 1]]);
+    }
+
+    square[changedIdx] = newPoint;
+
     const size = Math.min(Math.abs(square[changedIdx][0] - square[crossIdx][0]),
         Math.abs(square[changedIdx][1] - square[crossIdx][1]));
     const x = square[crossIdx][0] + ((square[crossIdx][0] - square[changedIdx][0] > 0) ? -size : size);
@@ -61,6 +69,13 @@ export function reshapeSquare(square, changedIdx){
     newSquare[changedIdx] = [x, y];
     newSquare[(crossIdx + 1) % 4] = [square[crossIdx][0], y];
     newSquare[(changedIdx + 1) % 4] = [x, square[crossIdx][1]];
+
+    const newSquareArr = [];
+    newSquare.map(pair => {
+        newSquareArr.push(pair[0]);
+        newSquareArr.push(pair[1]);
+    })
+
 
     return newSquare;
 

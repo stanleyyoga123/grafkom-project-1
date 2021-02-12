@@ -17,16 +17,16 @@ export class Master {
         // For Line
         this.lines = [];
         this.line_move = [];
-        // this.line_priority = [];
         this.line_start = [];
-        this.line_stop = [];
+        // this.line_stop = [];
         this.lines_color = [];
 
         // For Square
         this.squares = [];
         this.squares_color = [];
-        this.square_start = [];
-        this.square_end = []; 
+        this.square_move = [];
+        // this.square_start = [];
+        // this.square_end = []; 
 
         // For Polygon
         this.polygons = [];
@@ -45,15 +45,16 @@ export class Master {
         // For Line
         this.lines = [];
         this.line_move = [];
-        this.line_priority = [];
         this.line_start = [];
-        this.line_stop = [];
         this.lines_color = [];
 
         // For Square
         this.squares = [];
         this.square_start = [];
         this.square_end = []; 
+        this.square_start = [];
+        this.square_stop = [];
+        this.squares_color = [];
 
         // For Polygon
         this.polygons = [];
