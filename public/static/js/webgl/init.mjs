@@ -73,10 +73,9 @@ function events(master) {
             try{
                 var data = JSON.parse(event.target.result);
             } catch (err) {
-                alert("invalid json file data!");
+                alert(`invalid json file data!\n${err}`);
             }
 
-            // console.log(obj);
             master.loadJSONData(data);
         });
 
