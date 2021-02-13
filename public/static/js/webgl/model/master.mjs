@@ -25,11 +25,12 @@ export class Master {
         this.squares = [];
         this.squares_color = [];
         this.square_move = [];
-        // this.square_start = [];
-        // this.square_end = []; 
+        this.square_start = [];
+        this.square_end = []; 
 
         // For Polygon
         this.polygons = [];
+        this.polygons_move = [];
         this.polygons_color = [];
         this.n_poly = [];
         this.cur_poly = [];
@@ -52,7 +53,6 @@ export class Master {
         this.squares = [];
         this.square_start = [];
         this.square_end = []; 
-        this.square_start = [];
         this.square_stop = [];
         this.squares_color = [];
 

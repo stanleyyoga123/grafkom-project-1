@@ -5,6 +5,7 @@ import {createLine} from './shapes/line.mjs';
 import {createSquare, reshapeSquare} from './shapes/square.mjs';
 import {getPointInLine} from './action/line.mjs';
 import {getPointInSquare} from './action/square.mjs';
+import {getPointInPoly} from './action/polygon.mjs';
 
 export function init(master) {
     master.canvas = document.getElementById('glCanvas');
@@ -109,6 +110,12 @@ function events(master) {
                         }
                     } else if (radio[i].value == 'change-square' && master.square_move.length != 0){
                         master.squares[master.square_move[0]] = reshapeSquare(master.square_move, [x,y]);
+                    } else if (radio[i].value == 'change-polygon') {
+                        const move = master.polygons_move;
+                        if (move.length > 0) {
+                            master.polygons[move[0]][move[1]] = x;
+                            master.polygons[move[0]][move[1]+1] = y;
+                        }
                     }
                 }
             }
@@ -139,8 +146,10 @@ function events(master) {
                     }
                 } else if (radio[i].value == 'change-line') {
                     getPointInLine(master, [x,y]);
-                } else if (radio[i].value == 'change-square'){
+                } else if (radio[i].value == 'change-square') {
                     getPointInSquare(master, [x,y]);
+                } else if (radio[i].value == 'change-polygon') {
+                    getPointInPoly(master, [x,y]);
                 }
             }
         }
