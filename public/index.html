@@ -50,7 +50,9 @@
                 <p style="margin-right: 20px;">Change:</p>
                 <input type="radio" name="action" value="change-line">Line 
                 <input type="radio" name="action" value="change-square">Square  
-                <input type="radio" name="action" value="change-polygon">Polygon  
+                <input type="radio" name="action" value="change-polygon">Polygon Point
+                <input type="radio" name="action" value="polygon-color">Polygon Color
+                <span id="select"></span>
             </div>
         </div>
         <div style="height: 600; width: 600; margin-bottom: 40px;">
@@ -63,7 +65,37 @@
         </div>
 
         <textarea class="" rows="40" cols="80" readonly >
-            Tulis disini nanti help nya
+Merubah Warna
+- Klik kiri pada tombol di kiri bawah (bawah export import)
+- Pilih warna sesuka hati
+Membuat Line
+- Nyalakan radio button "Line"
+- Klik kiri mouse, kemudian drag untuk membuat garis
+Membuat square
+- Nyalakan radio button "Square"
+- Klik kiri mouse, kemudian drag untuk membuat persegi
+Membuat Polygon (Only Convex Polygon)
+- Nyalakan radio button "Polygon"
+- Checklist checkbox "Start Poly" untuk memulai membuat polygon
+- Klik titik-titik yang diinginkan (minimal 3)
+- Unchecklist checkbox "Start Poly" saat selesai membuat 1 bangun polygon
+Merubah Line
+- Nyalakan radio pada menu Change "Line"
+- Klik kiri pada titik sudut garis, kemudian drag untuk merubah garis
+Merubah Square
+- Nyalakan radio pada menu Change "Square"
+- Klik kiri pada titik sudut garis, kemudian drag untuk merubah persegi
+Merubah Titik Polygon
+- Nyalakan radio pada menu change "Polygon Point"
+- Klik kiri pada tiitk sudut suatu polygon, kemudian drag untuk merubah polygon
+Merubah Warna Polygon
+- Nyalakan radio button Polygon color
+- Klik kiri pada titik sudut suatu bangun polygon, warnanya akan berubah sesuai dengan warna yang aktif saat ini 
+Export
+- Klik export
+Import
+- Klik import
+- Pilih json hasil export sebelumnya
         </textarea>
 
         <div style="height: 200px; max-height: 10%;"></div>

@@ -150,6 +150,15 @@ function events(master) {
                     getPointInSquare(master, [x,y]);
                 } else if (radio[i].value == 'change-polygon') {
                     getPointInPoly(master, [x,y]);
+                } else if (radio[i].value == 'polygon-color') {
+                    getPointInPoly(master, [x,y]);
+                    const poly_index = master.polygons_move[0];
+                    const color_index = master.polygons_move[2];
+                    for (var j = 0; j < master.polygons[poly_index].length*3/2; j+=3) {
+                        master.polygons_color[color_index+j] = master.cur_color[0];
+                        master.polygons_color[color_index+j+1] = master.cur_color[1];
+                        master.polygons_color[color_index+j+2] = master.cur_color[2];
+                    }
                 }
             }
         }
@@ -179,8 +188,10 @@ function events(master) {
                     // Polygon Event
                 } else if (radio[i].value == 'change-line') {
                     master.line_move = [];
-                } else if (radio[i].value == 'change-square'){
+                } else if (radio[i].value == 'change-square') {
                     master.square_move = [];
+                } else if (radio[i].value == 'change-polygon') {
+                    master.polygons_move = [];
                 }
             }
         }
