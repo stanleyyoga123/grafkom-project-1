@@ -12,14 +12,13 @@ export function renderLine(master) {
         el.forEach((el2) => renderedLine.push(el2));
     });
     master.lines_color.forEach(el => colors.push(el));
-    // console.log(colors);
 
-    master.gl.clear(master.gl.COLOR_BUFFER_BIT);
+    master.gl.clear(master.gl.COLOR_BUFFER_BIT | master.gl.DEPTH_BUFFER_BIT);
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.bufferId);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedLine));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(colors));
-    for (var i = 0; i < renderedLine.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
+    for (var i = 0; i < renderedLine.length / 8; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
 export function createLine(start, end) {

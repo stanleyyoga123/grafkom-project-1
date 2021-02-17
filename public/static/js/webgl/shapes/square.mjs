@@ -15,7 +15,6 @@ export function renderSquare(master) {
         createSquare(master.square_start, master.square_end).forEach(el => renderedSquare.push(el));
         for (var i = 0; i < 4; ++i) {
             master.cur_color.forEach(el => colors.push(el));
-            // console.log(i);
         }
     } 
     master.squares.forEach((el) => {
@@ -27,7 +26,7 @@ export function renderSquare(master) {
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(renderedSquare));
     master.gl.bindBuffer(master.gl.ARRAY_BUFFER, master.cbufferId);
     master.gl.bufferSubData(master.gl.ARRAY_BUFFER, 0, new Float32Array(colors));
-    for (var i = 0; i < renderedSquare.length / 4; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
+    for (var i = 0; i < renderedSquare.length / 8; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
 export function createSquare(start, end) {

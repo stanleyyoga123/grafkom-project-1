@@ -99,7 +99,8 @@ function events(master) {
                     } else if (radio[i].value == 'square') {
                         master.square_end = [x,y];
                     } else if (radio[i].value == 'polygon') {
-                        // Event Polygon
+                        master.cur_poly[master.cur_n_poly*2-2] = x;
+                        master.cur_poly[master.cur_n_poly*2-1] = y;
                     } else if (radio[i].value == 'change-line') {
                         if (master.line_move.length > 0) {
                             if (master.line_move[5] == 0) {
