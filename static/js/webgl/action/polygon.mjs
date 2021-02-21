@@ -1,8 +1,4 @@
-import {distance} from './../utils/util.mjs';
-
-const threshold = 0.015;
-
-export function getPointInPoly(master, point) {
+function getPointInPoly(master, point) {
     var point_start_color = 0;
     for (var i = 0; i < master.polygons.length; ++i) {
         for (var j = 0; j < master.polygons[i].length; j+=2) {

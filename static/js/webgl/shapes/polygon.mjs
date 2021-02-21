@@ -1,4 +1,4 @@
-export function renderPolygon(master) {
+function renderPolygon(master) {
     var renderedPolygon = [];
     var colors = [];
     if (master.cur_n_poly > 2) {
