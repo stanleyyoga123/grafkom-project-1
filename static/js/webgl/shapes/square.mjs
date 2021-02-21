@@ -1,4 +1,4 @@
-export function rectangleVertex(point) {
+function rectangleVertex(point) {
     const width = 0.003;
     return [
         point[0]-width, point[1]-width,
@@ -8,7 +8,7 @@ export function rectangleVertex(point) {
     ];
 }
 
-export function renderSquare(master) {
+function renderSquare(master) {
     var renderedSquare = [];
     var colors = [];
     if (master.square_start.length != 0) {
@@ -29,7 +29,7 @@ export function renderSquare(master) {
     for (var i = 0; i < renderedSquare.length / 8; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
-export function createSquare(start, end) {
+function createSquare(start, end) {
     const size = Math.min(Math.abs(start[0] - end[0]), Math.abs(start[1] - end[1]));
     const xEnd = start[0] + ((start[0] - end[0] > 0) ? -size : size);
     const yEnd = start[1] + ((start[1] - end[1] > 0) ? -size : size);
@@ -47,7 +47,7 @@ export function createSquare(start, end) {
     ];
 }
 
-export function reshapeSquare(squareArr, newPoint){
+function reshapeSquare(squareArr, newPoint){
     const changedIdx = squareArr[1];
     const crossIdx = (changedIdx + 2) % 4;
     const square = []

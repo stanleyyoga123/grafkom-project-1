@@ -1,4 +1,4 @@
-export function initShaders(gl, vs_source, fs_source) {
+function initShaders(gl, vs_source, fs_source) {
     // Compile shaders
     var vertexShader = makeShader(gl, vs_source, gl.VERTEX_SHADER);
     var fragmentShader = makeShader(gl, fs_source, gl.FRAGMENT_SHADER);

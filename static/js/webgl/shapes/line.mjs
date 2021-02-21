@@ -1,6 +1,4 @@
-import {rotate} from './../utils/util.mjs'
-
-export function renderLine(master) {
+function renderLine(master) {
     var renderedLine = [];
     var colors = []
     if (master.line_start.length != 0) {
@@ -21,7 +19,7 @@ export function renderLine(master) {
     for (var i = 0; i < renderedLine.length / 8; ++i) master.gl.drawArrays(master.gl.TRIANGLE_FAN, 4 * i, 4);
 }
 
-export function createLine(start, end) {
+function createLine(start, end) {
     const width = 0.003;
     const deg = Math.atan2(end[1]-start[1], end[0]-start[0]) * 180 / Math.PI;
     var p1 = rotate(start[0], start[1], start[0], start[1]-width, -deg);

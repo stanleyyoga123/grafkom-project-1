@@ -1,6 +1,4 @@
-import {render} from './../render.mjs';
-
-export class Master {
+class Master {
     constructor() {
         this.canvas;
         this.gl; 

@@ -1,13 +1,4 @@
-import {initShaders} from './utils/initShaders.mjs';
-import {render} from './render.mjs'
-import {hex2dec} from './utils/util.mjs';
-import {createLine} from './shapes/line.mjs';
-import {createSquare, reshapeSquare} from './shapes/square.mjs';
-import {getPointInLine} from './action/line.mjs';
-import {getPointInSquare} from './action/square.mjs';
-import {getPointInPoly} from './action/polygon.mjs';
-
-export function init(master) {
+function init(master) {
     master.canvas = document.getElementById('glCanvas');
     master.gl = master.canvas.getContext('webgl');
 
